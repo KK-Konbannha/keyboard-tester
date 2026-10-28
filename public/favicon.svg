@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <title>キーボード打鍵速度測定</title>
+  <path fill="#272930" d="M0 4h32v24H0z"/>
+  <g fill="#d1d5db">
+    <path d="M4 8h4v4H4zM10 8h4v4h-4zM16 8h4v4h-4zM22 8h6v4h-6z"/>
+    <path d="M4 14h6v4H4zM24 14h4v4h-4z"/>
+    <path d="M4 20h4v4H4zM10 20h12v4H10zM24 20h4v4h-4z"/>
+  </g>
+  <path fill="#facc15" d="M12 14h4v4h-4zM18 14h4v4h-4z"/>
+</svg>

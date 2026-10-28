@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キーボード打鍵速度測定</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="keyboard-container">
+      <div class="keyboard" role="group" aria-label="JISキーボード">
+        <!-- 数字・記号 -->
+        <div class="keyboard-row" style="--row: 1">
+          <button type="button" class="key"
+            data-code="Backquote" disabled></button>
+          <button type="button" class="key" data-code="Digit1"
+            disabled></button>
+          <button type="button" class="key" data-code="Digit2"
+            disabled></button>
+          <button type="button" class="key" data-code="Digit3"
+            disabled></button>
+          <button type="button" class="key" data-code="Digit4"
+            disabled></button>
+          <button type="button" class="key" data-code="Digit5"
+            disabled></button>
+          <button type="button" class="key" data-code="Digit6"
+            disabled></button>
+          <button type="button" class="key" data-code="Digit7"
+            disabled></button>
+          <button type="button" class="key" data-code="Digit8"
+            disabled></button>
+          <button type="button" class="key" data-code="Digit9"
+            disabled></button>
+          <button type="button" class="key" data-code="Digit0"
+            disabled></button>
+          <button type="button" class="key" data-code="Minus" disabled></button>
+          <button type="button" class="key" data-code="Equal" disabled></button>
+          <button type="button" class="key" data-code="IntlYen"
+            disabled></button>
+          <button
+            type="button"
+            class="key"
+            data-code="Backspace"
+            aria-label="Backspace"
+            disabled
+          ></button>
+        </div>
+
+        <!-- Tab：6列 -->
+        <div class="keyboard-row" style="--row: 2">
+          <button type="button" class="key key-tab"
+            data-code="Tab" disabled></button>
+          <button type="button" class="key" data-code="KeyQ" disabled></button>
+          <button type="button" class="key" data-code="KeyW" disabled></button>
+          <button type="button" class="key" data-code="KeyE" disabled></button>
+          <button type="button" class="key" data-code="KeyR" disabled></button>
+          <button type="button" class="key" data-code="KeyT" disabled></button>
+          <button type="button" class="key" data-code="KeyY" disabled></button>
+          <button type="button" class="key" data-code="KeyU" disabled></button>
+          <button type="button" class="key" data-code="KeyI" disabled></button>
+          <button type="button" class="key" data-code="KeyO" disabled></button>
+          <button type="button" class="key" data-code="KeyP" disabled></button>
+          <button type="button" class="key" data-code="BracketLeft"
+            disabled></button>
+          <button type="button" class="key" data-code="BracketRight"
+            disabled></button>
+        </div>
+
+        <!-- Caps：7列。Qの行より1列分右にずれる -->
+        <div class="keyboard-row" style="--row: 3">
+          <button type="button" class="key key-caps"
+            data-code="CapsLock" disabled></button>
+          <button type="button" class="key" data-code="KeyA" disabled></button>
+          <button type="button" class="key" data-code="KeyS" disabled></button>
+          <button type="button" class="key" data-code="KeyD" disabled></button>
+          <button type="button" class="key" data-code="KeyF" disabled>_</button>
+          <button type="button" class="key" data-code="KeyG" disabled></button>
+          <button type="button" class="key" data-code="KeyH" disabled></button>
+          <button type="button" class="key" data-code="KeyJ" disabled>_</button>
+          <button type="button" class="key" data-code="KeyK" disabled></button>
+          <button type="button" class="key" data-code="KeyL" disabled></button>
+          <button type="button" class="key" data-code="Semicolon"
+            disabled></button>
+          <button type="button" class="key" data-code="Quote" disabled></button>
+          <button type="button" class="key" data-code="Backslash"
+            disabled></button>
+        </div>
+
+        <!-- Enter：2行にまたがる単一のボタン -->
+        <button
+          type="button"
+          class="key key-enter"
+          data-code="Enter"
+          aria-label="Enter"
+          disabled
+        ></button>
+
+        <!-- 左Shift：8列。Aの行よりさらに1列分右にずれる -->
+        <div class="keyboard-row" style="--row: 4">
+          <button type="button" class="key key-shift"
+            data-code="ShiftLeft" disabled></button>
+          <button type="button" class="key" data-code="KeyZ" disabled></button>
+          <button type="button" class="key" data-code="KeyX" disabled></button>
+          <button type="button" class="key" data-code="KeyC" disabled></button>
+          <button type="button" class="key" data-code="KeyV" disabled></button>
+          <button type="button" class="key" data-code="KeyB" disabled></button>
+          <button type="button" class="key" data-code="KeyN" disabled></button>
+          <button type="button" class="key" data-code="KeyM" disabled></button>
+          <button type="button" class="key" data-code="Comma" disabled></button>
+          <button type="button" class="key" data-code="Period"
+            disabled></button>
+          <button type="button" class="key" data-code="Slash" disabled></button>
+          <button type="button" class="key" data-code="IntlRo"
+            disabled></button>
+          <button type="button" class="key key-shift"
+            data-code="ShiftRight" disabled></button>
+        </div>
+
+        <!-- 修飾キー・日本語入力キー -->
+        <div class="keyboard-row" style="--row: 5">
+          <button type="button" class="key key-modifier"
+            data-code="ControlLeft" disabled></button>
+          <button type="button" class="key"
+            data-code="MetaLeft" disabled></button>
+          <button type="button" class="key"
+            data-code="AltLeft" disabled></button>
+          <button type="button" class="key key-modifier"
+            data-code="NonConvert" disabled></button>
+          <button type="button" class="key key-space"
+            data-code="Space" disabled></button>
+          <button type="button" class="key key-modifier"
+            data-code="Convert" disabled></button>
+          <button type="button" class="key key-modifier"
+            data-code="KanaMode" disabled></button>
+          <button type="button" class="key"
+            data-code="AltRight" disabled></button>
+          <button type="button" class="key"
+            data-code="ContextMenu" disabled></button>
+          <button type="button" class="key"
+            data-code="ControlRight" disabled></button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

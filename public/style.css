@@ -1,0 +1,190 @@
+/* ── 基本レイアウト ── */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  display: grid;
+  place-items: center;
+
+  padding: clamp(6px, 2vw, 20px);
+  background: #f3f4f6;
+  font-family: system-ui, sans-serif;
+}
+
+.keyboard-container {
+  /* 子要素のcqwを、この要素の横幅を基準に計算する */
+  container-type: inline-size;
+
+  width: 100%;
+  max-width: 1000px;
+  min-width: 0;
+}
+
+/* ── キーボードの寸法と配色 ── */
+
+.keyboard {
+  --columns: 60;
+
+  /*
+   * 1cqw = .keyboard-scrollの横幅の1%
+   * 高さ・隙間・余白・文字を同じ比率で縮小する。
+   */
+  --key-height: 5.8cqw;
+  --key-gap: 0.6cqw;
+  --row-gap: 0.6cqw;
+  --keyboard-padding: 1.6cqw;
+
+  --key-font-size: 1.6cqw;
+  --label-font-size: 1.1cqw;
+  --shift-font-size: 1.2cqw;
+
+  --key-bg: #d1d5db;
+  --key-text: #24262b;
+  --active-bg: #facc15;
+  --active-text: #332800;
+  --unused-bg: #454851;
+  --unused-text: #9298a3;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  grid-template-rows: repeat(5, var(--key-height));
+
+  column-gap: var(--key-gap);
+  row-gap: var(--row-gap);
+
+  width: 100%;
+  min-width: 0;
+  padding: var(--keyboard-padding);
+  background: #272930;
+}
+
+/* ── 各行の配置 ── */
+
+.keyboard-row {
+  grid-column: 1 / -1;
+  grid-row: var(--row);
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  column-gap: var(--key-gap);
+
+  min-width: 0;
+  min-height: 0;
+}
+
+/* ── 通常キー ── */
+
+.key {
+  grid-column: span var(--width, 4);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* キー内の上段・下段の文字の間隔 */
+  gap: 0.3cqw;
+
+  min-width: 0;
+  min-height: 0;
+
+  /* キー同士の間隔はGridのcolumn-gapで管理する */
+  margin: 0;
+  padding: 0.4cqw 0.2cqw;
+
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  background: var(--key-bg);
+  color: var(--key-text);
+
+  font-family: inherit;
+  font-size: var(--key-font-size);
+  font-weight: 600;
+  line-height: 1.15;
+  white-space: nowrap;
+
+  cursor: pointer;
+  touch-action: manipulation;
+
+  transition: background-color 0.15s;
+}
+
+/* キー内に表示する上段の文字 */
+.key-shift-label {
+  font-size: var(--shift-font-size);
+  font-weight: 500;
+}
+
+/* ── キーの状態 ── */
+
+/* 有効なキーの点灯 */
+.key.is-active:not(:disabled) {
+  background: var(--active-bg);
+  color: var(--active-text);
+}
+
+/* 使用しないキー */
+.key:disabled {
+  background: var(--unused-bg);
+  color: var(--unused-text);
+  opacity: 1;
+  cursor: default;
+}
+
+/* ── キーの幅：通常キーは4列 ── */
+
+.key-tab,
+.key-modifier {
+  --width: 6;
+}
+
+.key-caps {
+  --width: 7;
+}
+
+.key-shift {
+  --width: 8;
+}
+
+.key-space {
+  --width: 16;
+}
+
+/* ── 2段にまたがるEnter ── */
+
+.key-enter {
+  --width: 6;
+
+  /*
+   * 6列にまたがるキー幅は「6列分＋5つの隙間」。
+   * 隙間を1つ加えて6で割ることで、
+   * 「1列分＋1つの隙間」の切り欠きを作る。
+   */
+  --notch: calc((100% + var(--key-gap)) / var(--width));
+
+  grid-column: span var(--width) / -1;
+  grid-row: 2 / span 2;
+
+  /*
+   * paddingの百分率はキー自身の幅が基準にならないため、
+   * 文字の位置調整には横幅に比例する値を使う。
+   */
+  padding-left: 1.6cqw;
+  font-size: var(--shift-font-size);
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    var(--notch) 100%,
+    var(--notch) var(--key-height),
+    0 var(--key-height)
+  );
+}
